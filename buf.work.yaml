@@ -1,0 +1,5 @@
+version: v1
+directories:
+- protos
+- vendor/github.com/daniel-garcia/api-registry/identity
+

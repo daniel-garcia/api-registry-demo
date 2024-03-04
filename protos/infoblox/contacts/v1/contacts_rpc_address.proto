@@ -1,0 +1,57 @@
+syntax="proto3";
+
+package infoblox.contacts.v1;
+
+import "infoblox/contacts/v1/contacts.proto";
+
+message AddressServiceListRequest {
+    repeated string fields = 1;
+    string filter = 2;
+    string page_token = 3;
+    string order_by = 4;
+}
+
+message AddressServiceListResponse {
+    repeated Address results = 1;
+    string next_page_token = 2;
+}
+
+message AddressServiceUpdateRequest {
+	Address address = 1;
+}
+
+message AddressServiceUpdateResponse {
+	Address result = 1;
+}
+
+message AddressServiceDeleteRequest {
+    string name = 1;
+}
+
+message AddressServiceDeleteResponse {
+	Address result = 1;
+}
+
+message AddressServiceReadRequest {
+	string name = 1;
+}
+
+message AddressServiceReadResponse {
+	Address result = 1;
+}
+
+message AddressServiceCreateRequest {
+	Address address = 1;
+}
+
+message AddressServiceCreateResponse {
+	Address result = 1;
+}
+
+service AddressService {
+	rpc Create (AddressServiceCreateRequest) returns (AddressServiceCreateResponse) {}
+	rpc Read (AddressServiceReadRequest) returns (AddressServiceReadResponse) {}
+	rpc Update (AddressServiceUpdateRequest) returns (AddressServiceUpdateResponse) {}
+	rpc Delete (AddressServiceDeleteRequest) returns (AddressServiceDeleteResponse) {}
+	rpc List (AddressServiceListRequest) returns (AddressServiceListResponse) {}
+}

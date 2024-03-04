@@ -1,0 +1,62 @@
+syntax="proto3";
+
+package infoblox.contacts.v1;
+
+import "infoblox/contacts/v1/contacts.proto";
+
+message CompanyServiceListRequest {
+    repeated string fields = 1;
+    string filter = 2;
+    string page_token = 3;
+    string order_by = 4;
+}
+
+message CompanyServiceListResponse {
+	repeated Company results = 1;
+	string next_page_token = 2;
+}
+
+message CompanyServiceDeleteRequest {
+	string id = 1;
+}
+
+message CompanyServiceDeleteResponse {
+	Company result = 1;
+}
+
+message CompanyServiceGetRequest {
+    string id = 1;
+}
+
+message CompanyServiceUpdateRequest {
+	Company company = 1;
+}
+
+message CompanyServiceUpdateResponse {
+	Company result = 1;
+}
+
+message CompanyServiceReadRequest {
+	string name = 1;
+}
+
+message CompanyServiceReadResponse {
+	Company result = 1;
+}
+
+message CompanyServiceCreateRequest {
+	Company company = 1;
+}
+
+message CompanyServiceCreateResponse {
+	Company result = 1;
+}
+
+// a service that provides create, read, update, delete and list for Company
+service CompanyService {
+	rpc Create (CompanyServiceCreateRequest) returns (CompanyServiceCreateResponse) {}
+	rpc Read (CompanyServiceReadRequest) returns (CompanyServiceReadResponse) {}
+	rpc Update (CompanyServiceUpdateRequest) returns (CompanyServiceUpdateResponse) {}
+	rpc Delete (CompanyServiceDeleteRequest) returns (CompanyServiceDeleteResponse) {}
+	rpc List (CompanyServiceListRequest) returns (CompanyServiceListResponse) {}
+}

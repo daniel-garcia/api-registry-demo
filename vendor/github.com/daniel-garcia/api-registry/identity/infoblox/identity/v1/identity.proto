@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package infoblox.identity.v1;
+
+message User {
+	string username = 1;
+	repeated string groups = 2;
+	string account_id = 3;
+}
+
+message Account {
+	string name = 1;
+	string id = 2;
+}
+
